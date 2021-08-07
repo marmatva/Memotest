@@ -1,0 +1,1 @@
+{"version":3,"sources":["memo.scss"],"names":[],"mappings":"AAAA,gBACI,UACA,aACA","file":"memo.css","sourcesContent":[".game-container{\r\n    width: 95%;\r\n    display: grid;\r\n    grid-template-columns: repeate(1fr, 4);\r\n}"]}

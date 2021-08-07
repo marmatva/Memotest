@@ -1,0 +1,2 @@
+html{font-size:62.5%;box-sizing:border-box}*,*:before,*:after{box-sizing:inherit}.container{max-width:120rem;width:95%;margin:0 auto}a{text-decoration:none}img{width:100%}h1,h2,h3{margin:0}.game-container{width:90%;display:grid;grid-template-columns:repeat(4, 1fr);grid-row-gap:2rem;justify-items:center}.game-container .cover{height:25rem;padding:2.5rem;margin:1rem;border:1px solid #000;border-radius:2rem;display:flex;align-items:center}.game-container .transparent{visibility:hidden}.game-container.invisible{display:none}
+/*# sourceMappingURL=style.css.map */

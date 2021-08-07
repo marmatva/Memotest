@@ -19,13 +19,13 @@ function css(){
         .pipe( sourcemaps.init())
         .pipe( sass({outputStyle: 'compressed'}) )
         .pipe(sourcemaps.write('.'))
-        .pipe( dest('.build/css'))
+        .pipe( dest('./build/css'))
 }
 
 function javascript(){
     return src(paths.js)
         .pipe( sourcemaps.init())
-        .pipe( concat(bundle.js))
+        .pipe( concat('bundle.js'))
         .pipe( terser() )
         .pipe( sourcemaps.write('.') )
         .pipe( dest('./build/js'))
@@ -34,7 +34,7 @@ function javascript(){
 function minifyImg(){
     return src(paths.images)
         .pipe( imagemin())
-        .pipe(dest('./buld/img'))
+        .pipe(dest('./build/img'))
 }
 
 function turnWebp(){
