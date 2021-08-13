@@ -1,0 +1,46 @@
+.main-container{
+    padding: .5rem .5rem;
+    margin: 5rem auto;
+    width: 80%;
+    // border: 1px solid black;
+    border-radius: 2rem;
+    box-shadow: 10px 10px 30px 12px rgba(166,173,201,0.25); 
+    animation: sectionTransition 1.5s;
+
+    &.game{
+        width: 80%;
+        margin: 3rem auto;
+        
+        &.invisible{
+            display:none;
+        }
+    }
+}
+
+.section{ 
+    margin: 3rem 4rem;
+
+    h2{
+        color: $firstColor;
+        font-size: 2.5rem;
+    }
+    p{
+        font-size: 1.5rem;
+        line-height: 1.5;
+    }
+
+}
+
+@keyframes sectionTransition {
+    from{
+        opacity: 0;
+        // transform: rotateX(-20deg);
+        transform: translateY(-15%);
+    }
+
+    to{
+        opacity: 1;
+        // transform: rotateX(0deg);
+        transform: translateY(0%);
+    }
+}

@@ -1,25 +1,34 @@
 .game-container{
-    width: 90%;
+    margin: 1.5rem auto;
     display: grid;
     grid-template-columns: repeat(4,1fr);
-    grid-row-gap: 2rem;
+    gap: 1.5rem;
     justify-items: center;
     
     .cover{
-        height: 25rem;
-        padding: 2.5rem;
-        margin: 1rem;
-        border: 1px solid black;
+        height: 100%;
+        width: 100%;
+        box-shadow: 0 2px 4px 3px rgba(102, 102, 102, 0.15);
+        transition: box-shadow 0.3s;
         border-radius: 2rem;
         display: flex;
+        justify-content: center;
         align-items: center;
+
+        &:hover{
+            box-shadow: 0 4px 8px 6px rgba(102, 102, 102, 0.15);
+        }
+
+        img{
+            object-fit: scale-down;
+            max-width: 75%;
+            max-height: 75%;
+        }
     }
 
     .transparent{
         visibility:hidden; //ver que onda con opacity;
     }
 
-    &.invisible{
-        display:none;
-    }
+
 }

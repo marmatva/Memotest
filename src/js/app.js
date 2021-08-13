@@ -1,5 +1,5 @@
 const gameButton = document.querySelector('.start');
-const gameContainer = document.querySelector('.game-container');
+const gameContainer = document.querySelector('.main-container.game');
 let userSelection=[];
 
 function startApp(){
@@ -11,7 +11,6 @@ function startGame(){
     gameButton.textContent="Reiniciar";
     gameButton.onclick=restart;
     userSelection=[];
-    //gameRound();
     unblockUserInput();
 }
 

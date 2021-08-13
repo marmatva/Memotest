@@ -9,10 +9,14 @@ html{
 
 .container{
     max-width: 120rem;
-    width: 95%;
+    width: 85%; // Cambie esto!! para evitar scroll en Y
     margin: 0 auto;
 }
 
+body{
+    font-family: $primaryFont;
+    margin: 0;
+}
 // HTML TAGS
 
 a{
@@ -27,3 +31,27 @@ h1, h2, h3{
     margin: 0;
 }
 
+h1{
+    color: $firstColor;
+}
+
+// Utilities
+
+.button{
+    font-family: $primaryFont;
+    font-weight: $semiBold;
+    font-size: 1.3rem;
+    padding: .5rem 0.75rem;
+    border-radius: .5rem;
+    border: none;
+
+    &:hover{
+        color: $white;
+        background-color: $firstColor;
+    }
+
+}
+
+a, a:visited{
+    color: $firstColor;
+}
