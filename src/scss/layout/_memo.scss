@@ -1,5 +1,14 @@
+.game-page-content{
+    margin: 2% auto;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-evenly;
+    align-items: center;
+    height: 100%;
+}
+
 .game-container{
-    margin: 1.5rem auto;
+    margin: 4rem auto;
     display: grid;
     grid-template-columns: repeat(4,1fr);
     gap: 1.5rem;
@@ -19,16 +28,71 @@
             box-shadow: 0 4px 8px 6px rgba(102, 102, 102, 0.15);
         }
 
+        &.discovered{
+            background-color: rgb(102, 102, 102);
+            box-shadow: none;
+
+        }
+
         img{
             object-fit: scale-down;
             max-width: 75%;
             max-height: 75%;
+            transition: opacity .5s;
         }
     }
 
     .transparent{
-        visibility:hidden; //ver que onda con opacity;
+        opacity: 0;
+    }   
+
+    .visible{
+        opacity: 1;
     }
 
+}
+
+.game-main{
+    position: relative;
+}
+
+.game-overlay{
+    position: absolute;
+    background-color: rgba(102, 102, 102, 0.7);
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    opacity: 0;
+    transform: translateX(-100%);
+    transition: 1s .2s ease-in;
+    h2{
+        font-size: 4rem;
+        margin: 2rem;
+        color: $white
+    }
+
+}
+
+.overlay-on{
+    opacity: 1;
+    transform: translateX(0);
+}
+
+
+@keyframes overlayAnimation {
+    from{
+        opacity: 0;
+        transform: translateX(-100%);
+    }
+
+    to{
+        opacity: 1;
+        transform: translateX(0);
+    }
 
 }

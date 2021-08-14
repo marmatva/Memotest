@@ -1,14 +1,18 @@
 const gameButton = document.querySelector('.start');
 const gameContainer = document.querySelector('.main-container.game');
+const gameOverlay = document.querySelector('.game-overlay');
 let userSelection=[];
 
 function startApp(){
     asignImages();
+    window.addEventListener('DOMContentLoaded', ()=>{
+        setTimeout(styleOverlay,500);
+    })
     gameButton.onclick=startGame;
 }
 
-function startGame(){
-    gameButton.textContent="Reiniciar";
+function startGame(){ //ACTUALIZAR!!
+    styleOverlay();
     gameButton.onclick=restart;
     userSelection=[];
     unblockUserInput();
@@ -17,24 +21,20 @@ function startGame(){
 function restart(){
     cleanCards();
     asignImages();
-    if(gameContainer.classList.contains('invisible')){
-        gameContainer.classList.remove('invisible');
-    }
+    styleOverlay();
     userSelection=[];
     unblockUserInput();
 }
 
 function userWon(){
-    const div= document.querySelector('.game-result');
-
-    const result=document.createElement('H2');
-    result.textContent="Ganaste!";
-    
-    setTimeout(()=>{
-        gameContainer.classList.add('invisible');
-        div.appendChild(result);
-        gameButton.textContent="Empezar de Nuevo!"
-    },500);
+    if(!document.querySelector('.userWon-p')){
+        const result=document.createElement('H2');
+        result.textContent="Ganaste!";
+        result.classList.add('userWon-p');
+        gameOverlay.prepend(result);
+    }
+    gameButton.textContent="Empezar de Nuevo!";
+    setTimeout(styleOverlay,500);
 }
 
 
@@ -56,9 +56,14 @@ function unblockUserInput(){
 }
 
 function manageInput(e){
-    img=e.target.firstElementChild;
+    let img=e.target;
+    if(!e.target.tagName == 'IMG'){
+        img=e.target.firstElementChild;
+        console.log(img);
+    }
     userSelection.push(img);
     img.classList.remove('transparent');
+    img.classList.add('visible');
     testSelection();
 }
 
@@ -74,11 +79,12 @@ function testSelection(){
         } else{
             setTimeout(()=>{
                 userSelection.forEach( img =>{
-                    img.classList.add('transparent')
+                    img.classList.remove('visible');
+                    img.classList.add('transparent');
                 })
                 userSelection=[];
                 unblockUserInput();
-            },1000);
+            },500);
             
         }
     }
@@ -107,6 +113,10 @@ function cleanCards(){
     covers.forEach( cover => {
         cover.firstElementChild.remove();
     })
+}
+
+function styleOverlay(){
+    gameOverlay.classList.toggle('overlay-on');
 }
 
 document.addEventListener('DOMContentLoaded', ()=>{
