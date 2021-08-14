@@ -23,15 +23,11 @@
         display: flex;
         justify-content: center;
         align-items: center;
+        transition: background-color 1s;
 
         &:hover{
             box-shadow: 0 4px 8px 6px rgba(102, 102, 102, 0.15);
-        }
-
-        &.discovered{
-            background-color: rgb(102, 102, 102);
-            box-shadow: none;
-
+            cursor: pointer;
         }
 
         img{
@@ -39,6 +35,19 @@
             max-width: 75%;
             max-height: 75%;
             transition: opacity .5s;
+        }
+
+        &.found{
+            background:rgba(143, 143, 143,0.75);
+            box-shadow: none;
+
+            &:hover{
+                cursor:initial;
+            }
+
+            img{
+                opacity: 0;
+            }
         }
     }
 

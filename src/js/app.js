@@ -1,5 +1,5 @@
 const gameButton = document.querySelector('.start');
-const gameContainer = document.querySelector('.main-container.game');
+const gameContainer = document.querySelector('.game-container');
 const gameOverlay = document.querySelector('.game-overlay');
 let userSelection=[];
 
@@ -39,27 +39,31 @@ function userWon(){
 
 
 function blockUserInput(){
-    const covers=document.querySelectorAll('.cover');
-    covers.forEach( cover => {
-        cover.onclick=()=>{}
-    })
+    gameContainer.onclick=()=>{};
+    // const covers=document.querySelectorAll('.cover');
+    // covers.forEach( cover => {
+    //     cover.onclick=()=>{}
+    // })
 }
 
 function unblockUserInput(){
-    const covers=document.querySelectorAll('.cover');
+    gameContainer.onclick=manageInput;
+    // const covers=document.querySelectorAll('.cover');
 
-    covers.forEach( cover => {
-        if(cover.firstElementChild.classList.contains('transparent')){
-            cover.onclick=manageInput;
-        }
-    })
+    // covers.forEach( cover => {
+    //     if(cover.firstElementChild.classList.contains('transparent')){
+    //         cover.onclick=manageInput;
+    //     }
+    // })
 }
 
 function manageInput(e){
+    if(e.target.classList.contains('game-container')){
+        return;
+    }
     let img=e.target;
-    if(!e.target.tagName == 'IMG'){
+    if(!(e.target.tagName === 'IMG')){
         img=e.target.firstElementChild;
-        console.log(img);
     }
     userSelection.push(img);
     img.classList.remove('transparent');
@@ -71,8 +75,14 @@ function testSelection(){
     if (userSelection.length == 2){
         blockUserInput();
         if(userSelection[0].src==userSelection[1].src){
+            let userRightGuess = userSelection;
+            setTimeout(()=>{
+                userRightGuess.forEach( img => {
+                    img.parentElement.classList.add('found');
+                })
+            },500)
             userSelection=[];
-            if(document.querySelectorAll('.transparent').length==0){
+            if(document.querySelectorAll('img.transparent').length==0){
                 userWon();
             }
             unblockUserInput();
