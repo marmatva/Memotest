@@ -121,6 +121,7 @@ function asignImages(){
 function cleanCards(){
     const covers=document.querySelectorAll('.cover');
     covers.forEach( cover => {
+        cover.classList.remove('found');
         cover.firstElementChild.remove();
     })
 }
