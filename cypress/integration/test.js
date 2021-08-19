@@ -7,7 +7,7 @@ describe('Checks the status of the page', ()=>{
 
         cy.get('.game-overlay').should('be.visible');
 
-        cy.contains('Start!').click();
+        cy.get('.start').click();
     })
 
     it('Check the randomness of the images', ()=>{
@@ -20,7 +20,7 @@ describe('Checks the status of the page', ()=>{
         })
 
         cy.visit(URL);
-        cy.contains('Start!').click();
+        cy.get('.start').click();
 
         let newPositions =[];
         
@@ -64,7 +64,7 @@ describe('Checks the status of the page', ()=>{
         })
 
         it('Tries to Play Again', ()=>{
-            cy.contains('Empezar de Nuevo').click();
+            cy.get('.start').click();
             cy.get('.game-overlay').should('not.be.visible');
             cy.get('div.found').should('have.length',0);
             cy.get('img.transparent').should('have.length', CARDS_NUMBER);
