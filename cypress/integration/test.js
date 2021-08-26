@@ -35,16 +35,22 @@ describe('Checks the status of the page', ()=>{
     
     describe('Plays the game', ()=>{
         let pairsMap, pairsList;
-        it('Select a wrong pair', ()=>{
+        it('Select twice the same card', ()=>{
             cy.get('img.transparent').then(images => {
                 pairsMap = obtainPairs(images);
                 pairsList = Object.values(pairsMap);
 
                 pairsList[0][0].click();
-                pairsList[1][0].click();
-
-                cy.get('img.transparent').should('have.length', CARDS_NUMBER);
+                pairsList[0][0].click();
+                
+                cy.wrap(pairsList[0][0]).parent().should('have.not.class', 'found')
             })
+        })
+
+        it('Select a wrong pair', ()=>{
+            pairsList[1][0].click();
+            
+            cy.get('img.transparent').should('have.length', CARDS_NUMBER);
         })
 
         it('Solves the game', ()=>{
