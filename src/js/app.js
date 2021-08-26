@@ -65,6 +65,9 @@ function manageInput(e){
     if(!(e.target.tagName === 'IMG')){
         img=e.target.firstElementChild;
     }
+    if(userSelection.length===1 && userSelection[0]===img){
+        return;
+    }
     userSelection.push(img);
     img.classList.remove('transparent');
     img.classList.add('visible');
