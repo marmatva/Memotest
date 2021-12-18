@@ -58,7 +58,7 @@ function unblockUserInput(){
 }
 
 function manageInput(e){
-    if(e.target.classList.contains('game-container')){
+    if(e.target.classList.contains('game-container') || e.target.classList.contains('found') || e.target.parentElement.classList.contains('found')){
         return;
     }
     let img=e.target;
